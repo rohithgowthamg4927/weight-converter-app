@@ -14,10 +14,9 @@ def convert_weight(amount, from_unit, to_unit):
     if from_unit not in conversions or to_unit not in conversions:
         raise ValueError("Invalid unit")
 
-    # Convert the input amount to kilograms
+    #conversion
     amount_in_kg = amount / conversions[from_unit]
 
-    # Convert kilograms to the target unit
     result = amount_in_kg * conversions[to_unit]
     
     return result

@@ -1,20 +1,19 @@
-# Use the official Python image from the Docker Hub
 FROM python:3.10
 
-# Set the working directory in the container
+#set working dir
 WORKDIR /app
 
-# Copy the requirements.txt file into the container
+# Copy requirements.txt to container
 COPY requirements.txt .
 
-# Install the dependencies from requirements.txt
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of your application code into the container
+#Copy appln code 
 COPY . .
 
-# Expose the port your Flask app will run on
+# Expose port 80(HTTP) for container to run on
 EXPOSE 80
 
-# Define the command to run your Flask app
+#command to run application
 CMD ["python", "app.py"]
