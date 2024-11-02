@@ -106,18 +106,19 @@
             <label for="amount">Amount:</label>
             <input type="text" name="amount" required value="{{ request.form.amount }}">
             <label for="from_unit">From:</label>
-            <select name="from_unit">
-                <option value="kg">Kilograms</option>
-                <option value="g">Grams</option>
-                <option value="lb">Pounds</option>
-                <option value="oz">Ounces</option>
+            <select name="from_unit" id="from_unit">
+                <option value="kg" {% if from_unit=="kg" %}selected{% endif %}>Kilograms</option>
+                <option value="g" {% if from_unit=="g" %}selected{% endif %}>Grams</option>
+                <option value="lb" {% if from_unit=="lb" %}selected{% endif %}>Pounds</option>
+                <option value="oz" {% if from_unit=="oz" %}selected{% endif %}>Ounces</option>
             </select>
+            
             <label for="to_unit">To:</label>
-            <select name="to_unit">
-                <option value="kg">Kilograms</option>
-                <option value="g">Grams</option>
-                <option value="lb">Pounds</option>
-                <option value="oz">Ounces</option>
+            <select name="to_unit" id="to_unit">
+                <option value="kg" {% if to_unit=="kg" %}selected{% endif %}>Kilograms</option>
+                <option value="g" {% if to_unit=="g" %}selected{% endif %}>Grams</option>
+                <option value="lb" {% if to_unit=="lb" %}selected{% endif %}>Pounds</option>
+                <option value="oz" {% if to_unit=="oz" %}selected{% endif %}>Ounces</option>
             </select>
             <br>
             <button type="submit">Convert</button>
