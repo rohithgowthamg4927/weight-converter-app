@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Converter</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Oswald|Rambla|Staatliches&display=swap');
+
+        :root {
+            --font-staat: 'Staatliches', cursive;
+            --font-os: 'Oswald', sans-serif;
+            --font-ram: 'Rambla', sans-serif;
+            --main-bg-color: #232f3e;
+            --light-bg-color: #2a3b4d;
+            --button-bg-color: #4b5c71;
+            --button-hover-color: #6c7b94;
+            --text-color: #ffffff;
+        }
+
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            color: var(--text-color);
+            text-align: center;
+            padding: 20px;
+        }
+
+        div {
+            background-color: var(--light-bg-color);
+            border-radius: 10px;
+            padding: 30px;
+            width: 60%;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            height: auto;
+        }
+
+        h1 {
+            font-family: var(--font-staat);
+            color: black;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        form {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        label {
+            margin-right: 10px;
+            font-family: var(--font-os);
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin: 0 10px;
+            width: 80px;
+            font-family: var(--font-os);
+            background-color: #ffffff;
+        }
+
+        select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin: 0 10px;
+            font-family: var(--font-os);
+            background-color: #ffffff;
+        }
+
+        button {
+            padding: 12px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: var(--button-bg-color);
+            color: var(--text-color);
+            font-family: var(--font-ram);
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 40px;
+        }
+
+        button:hover {
+            background-color: var(--button-hover-color);
+            color: var(--text-color);
+        }
+
+        #answer {
+            font-family: var(--font-os);
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Weight Converter</h1>
+    <div>
+        <form method="POST">
+            <label for="amount">Amount:</label>
+            <input type="text" name="amount" required value="{{ request.form.amount }}">
+            <label for="from_unit">From:</label>
+            <select name="from_unit">
+                <option value="kg">Kilograms</option>
+                <option value="g">Grams</option>
+                <option value="lb">Pounds</option>
+                <option value="oz">Ounces</option>
+            </select>
+            <label for="to_unit">To:</label>
+            <select name="to_unit">
+                <option value="kg">Kilograms</option>
+                <option value="g">Grams</option>
+                <option value="lb">Pounds</option>
+                <option value="oz">Ounces</option>
+            </select>
+            <br>
+            <button type="submit">Convert</button>
+        </form>
+        {% if result %}
+        <p id="answer">Result: {{ result }}</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>
