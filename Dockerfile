@@ -1,3 +1,5 @@
+# Build stage 1
+
 FROM python:3.12 AS builder
 
 WORKDIR /app
@@ -6,15 +8,17 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+
+#Stage 2
 FROM python:3.12-alpine
+
+COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 
 WORKDIR /app
 
-COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
-COPY --from=builder /app /app
+COPY app.py .
 
-COPY app.py .  # Make sure app.py is copied
-COPY templates/ ./templates  # Copy templates directory
+COPY index.html .
 
 EXPOSE 80
 
