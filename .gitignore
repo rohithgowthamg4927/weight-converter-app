@@ -1,22 +1,19 @@
-# Ignore virtual environment
 venv/
 
-# Python cache and bytecode
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# Environment and config files
+
 *.env
 *.log
 
-# OS and editor-specific files
 *.DS_Store
 *.swp
 *~
 .idea/
 .vscode/
 
-# Ignore Docker-related files
+
 docker-compose.override.yml
