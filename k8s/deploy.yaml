@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weight-converter-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weight-converter-app
+  template:
+    metadata:
+      labels:
+        app: weight-converter-app
+    spec:
+        containers:
+        - name: weight-converter-app
+          image: rohith4927/weight-converter-app:v2
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /  # Adjust the path based on your application
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /  # Adjust the path based on your application
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 20
